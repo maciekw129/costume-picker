@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Person {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  display   String
+  costumeId String?  @unique
+  costume   Costume? @relation(fields: [costumeId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Costume {
+  id        String   @id @default(cuid())
+  name      String
+  imageUrl  String?
+  person    Person?
+  createdAt DateTime @default(now())
+}
