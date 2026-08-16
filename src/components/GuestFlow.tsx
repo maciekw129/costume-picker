@@ -122,23 +122,23 @@ export function GuestFlow() {
   }
 
   return (
-    <div className="flex min-h-svh flex-col">
-      <header className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-2 px-4 py-12">
-        <JackOLantern className="float-bob h-20 w-24 drop-shadow-[0_0_18px_rgba(255,122,24,0.55)]" />
-        <h1 className="flicker font-display text-center text-5xl leading-tight text-ember drop-shadow-[0_0_24px_rgba(255,122,24,0.35)] sm:text-6xl">
+    <div className="flex min-h-dvh flex-col">
+      <header className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-2 px-4 py-8 sm:py-12">
+        <JackOLantern className="float-bob h-16 w-20 drop-shadow-[0_0_18px_rgba(255,122,24,0.55)] sm:h-20 sm:w-24" />
+        <h1 className="flicker font-display text-center text-3xl leading-tight text-ember drop-shadow-[0_0_24px_rgba(255,122,24,0.35)] break-words sm:text-5xl md:text-6xl">
           Krypta Kostiumów
         </h1>
-        <p className="text-center text-sm text-bone-dim sm:text-base">
+        <p className="text-center text-xs text-bone-dim sm:text-sm md:text-base">
           Halloweenowa loteria przebrań. Wejdź, a los wskaże Twój strój.
         </p>
 
-        <div className="panel reveal-in mt-8 w-full p-6 sm:p-8">
+        <div className="panel reveal-in mt-6 w-full p-5 sm:mt-8 sm:p-8">
           {phase === 'name' && (
             <form onSubmit={handleNameSubmit} className="flex flex-col gap-4">
               <div>
                 <label
                   htmlFor="guest-name"
-                  className="mb-2 block font-display text-2xl text-ghost"
+                  className="mb-2 block font-display text-xl text-ghost sm:text-2xl"
                 >
                   Jak masz na imię, śmiałku?
                 </label>
@@ -191,7 +191,7 @@ export function GuestFlow() {
 
           {phase === 'revealed' && costume && (
             <div className="reveal-in flex flex-col items-center gap-5">
-              <h2 className="font-display text-3xl text-toxic drop-shadow-[0_0_16px_rgba(163,230,53,0.4)]">
+              <h2 className="font-display text-xl text-toxic drop-shadow-[0_0_16px_rgba(163,230,53,0.4)] sm:text-3xl">
                 Twój los został przypieczętowany
               </h2>
               <div className="flex w-full flex-col items-center gap-4 rounded-xl border border-arcane/40 bg-black/30 p-6">
@@ -200,18 +200,18 @@ export function GuestFlow() {
                   <img
                     src={costume.imageUrl}
                     alt={costume.name}
-                    className="h-48 w-48 rounded-lg object-cover shadow-[0_0_30px_rgba(168,85,247,0.3)]"
+                    className="h-36 w-36 rounded-lg object-cover shadow-[0_0_30px_rgba(168,85,247,0.3)] sm:h-48 sm:w-48"
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
                 ) : (
-                  <GhostSvg className="h-40 w-40 drop-shadow-[0_0_18px_rgba(203,188,240,0.35)]" />
+                  <GhostSvg className="h-32 w-32 drop-shadow-[0_0_18px_rgba(203,188,240,0.35)] sm:h-40 sm:w-40" />
                 )}
                 <div className="text-center">
                   <p className="text-sm text-bone-dim">
                     {displayName}, tej nocy wcielasz się w:
                   </p>
-                  <p className="font-display text-4xl text-ember">{costume.name}</p>
+                  <p className="font-display text-2xl text-ember break-words sm:text-4xl">{costume.name}</p>
                 </div>
               </div>
               <p className="text-center text-xs text-bone-dim">

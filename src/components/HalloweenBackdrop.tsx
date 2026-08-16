@@ -75,10 +75,10 @@ export function HalloweenBackdrop() {
       <div aria-hidden="true" className="bat bat-3">
         <BatSvg />
       </div>
-      <div aria-hidden="true" className="absolute left-0 top-0 z-[2]">
+      <div aria-hidden="true" className="spiderweb absolute left-0 top-0 z-[2]">
         <Spiderweb />
       </div>
-      <div aria-hidden="true" className="absolute bottom-0 right-0 z-[2] rotate-180 opacity-40">
+      <div aria-hidden="true" className="spiderweb absolute bottom-0 right-0 z-[2] rotate-180 opacity-40">
         <Spiderweb />
       </div>
     </>

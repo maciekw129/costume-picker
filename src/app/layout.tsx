@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: 'Krypta Kostiumów',
   description:
     'Halloweenowa loteria kostiumów — podaj imię i wylosuj swój strój, zanim rozgarną go inne upiory.',
+  other: {
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+  },
 }
 
 export default function RootLayout({
@@ -29,7 +32,9 @@ export default function RootLayout({
     <html lang="pl" className={`${nosifer.variable} ${nunito.variable}`}>
       <body className="font-body antialiased">
         <HalloweenBackdrop />
-        <main className="relative z-10 flex min-h-svh flex-col">{children}</main>
+        <main className="relative z-10 flex min-h-dvh flex-col px-[env(safe-area-inset-left)] pb-[env(safe-area-inset-bottom)]">
+          {children}
+        </main>
       </body>
     </html>
   )

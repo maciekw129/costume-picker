@@ -34,8 +34,8 @@ export function AdminLogin() {
   }
 
   return (
-    <div className="panel reveal-in w-full p-6 sm:p-8">
-      <h1 className="font-display text-4xl text-ember drop-shadow-[0_0_20px_rgba(255,122,24,0.35)]">
+    <div className="panel reveal-in w-full p-5 sm:p-8">
+      <h1 className="font-display text-3xl text-ember drop-shadow-[0_0_20px_rgba(255,122,24,0.35)] sm:text-4xl">
         Skryptorium
       </h1>
       <p className="mt-2 text-sm text-bone-dim">
@@ -138,7 +138,7 @@ export function AdminDashboard({ data }: { data: AdminState }) {
     <div className="reveal-in flex flex-col gap-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-4xl text-ember drop-shadow-[0_0_20px_rgba(255,122,24,0.35)]">
+          <h1 className="font-display text-3xl text-ember drop-shadow-[0_0_20px_rgba(255,122,24,0.35)] sm:text-4xl">
             Skryptorium
           </h1>
           <p className="mt-1 text-sm text-bone-dim">Komora zarządzania kostiumami i losami.</p>
@@ -148,14 +148,14 @@ export function AdminDashboard({ data }: { data: AdminState }) {
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <StatCard label="Kostiumy" value={data.total} accent="text-ghost" />
         <StatCard label="Przydzielone" value={data.drawn} accent="text-toxic" />
         <StatCard label="W puli" value={data.remaining} accent="text-ember" />
       </div>
 
-      <div className="panel p-5 sm:p-6">
-        <h2 className="font-display text-2xl text-ghost">Dodaj kostium</h2>
+      <div className="panel p-4 sm:p-6">
+        <h2 className="font-display text-xl text-ghost sm:text-2xl">Dodaj kostium</h2>
         <form onSubmit={handleAdd} className="mt-4 flex flex-col gap-3">
           <div className="grid gap-3 sm:grid-cols-[1fr_1.6fr]">
             <input
@@ -196,8 +196,8 @@ export function AdminDashboard({ data }: { data: AdminState }) {
         </form>
       </div>
 
-      <div className="panel p-5 sm:p-6">
-        <h2 className="font-display text-2xl text-ghost">Kostiumy w puli</h2>
+      <div className="panel p-4 sm:p-6">
+        <h2 className="font-display text-xl text-ghost sm:text-2xl">Kostiumy w puli</h2>
         {data.costumes.length === 0 ? (
           <p className="mt-4 text-sm text-bone-dim">
             Pula jest pusta. Dodaj kostiumy, aby otworzyć losowanie.
@@ -205,8 +205,8 @@ export function AdminDashboard({ data }: { data: AdminState }) {
         ) : (
           <ul className="mt-4 flex flex-col divide-y divide-arcane/20">
             {data.costumes.map((c) => (
-              <li key={c.id} className="flex items-center gap-4 py-3">
-                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-arcane/30 bg-black/40">
+              <li key={c.id} className="flex items-center gap-2 py-3 sm:gap-4">
+                <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-arcane/30 bg-black/40 sm:h-12 sm:w-12">
                   {c.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -225,17 +225,18 @@ export function AdminDashboard({ data }: { data: AdminState }) {
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-bold text-bone">{c.name}</p>
                   {c.person ? (
-                    <p className="text-sm text-toxic">
-                      Przydzielony: <span className="font-semibold">{c.person.display}</span>
+                    <p className="truncate text-xs text-toxic sm:text-sm">
+                      <span className="hidden sm:inline">Przydzielony: </span>
+                      <span className="font-semibold">{c.person.display}</span>
                     </p>
                   ) : (
                     <p className="text-sm text-bone-dim">W puli</p>
                   )}
                 </div>
-                <div className="flex shrink-0 gap-2">
+                <div className="flex shrink-0 gap-1 sm:gap-2">
                   {c.person ? (
                     <button
-                      className="btn btn-danger px-3 py-1.5 text-xs"
+                      className="btn btn-danger px-2 py-1 text-[10px] sm:px-3 sm:py-1.5 sm:text-xs"
                       disabled={busy !== null}
                       onClick={() => handleUndo(c.person!.id, c.person!.display)}
                     >
@@ -244,7 +245,7 @@ export function AdminDashboard({ data }: { data: AdminState }) {
                     </button>
                   ) : (
                     <button
-                      className="btn btn-ghost px-3 py-1.5 text-xs"
+                      className="btn btn-ghost px-2 py-1 text-[10px] sm:px-3 sm:py-1.5 sm:text-xs"
                       disabled={busy !== null}
                       onClick={() => handleDelete(c.id)}
                     >
@@ -263,9 +264,9 @@ export function AdminDashboard({ data }: { data: AdminState }) {
 
 function StatCard({ label, value, accent }: { label: string; value: number; accent: string }) {
   return (
-    <div className="panel flex flex-col items-center gap-1 px-3 py-4">
-      <span className={`font-display text-3xl ${accent}`}>{value}</span>
-      <span className="text-xs text-bone-dim">{label}</span>
+    <div className="panel flex flex-col items-center gap-1 px-2 py-3 sm:px-3 sm:py-4">
+      <span className={`font-display text-2xl leading-none sm:text-3xl ${accent}`}>{value}</span>
+      <span className="text-[10px] leading-tight text-bone-dim sm:text-xs">{label}</span>
     </div>
   )
 }
